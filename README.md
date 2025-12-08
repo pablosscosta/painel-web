@@ -23,9 +23,28 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 
 - 🚧 Em desenvolvimento  
 
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- Python 
+- HTML
 
 ---
 
+## 📂 Estrutura do Projeto
+
+```
+painel-web/
+├── backend/
+│   └── app.py
+├── frontend/
+│   └── index.html
+├── .gitignore
+└── README.md
+```
+
+---
 
 ## 📄 Licença
 
