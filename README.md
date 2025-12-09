@@ -30,6 +30,7 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 - Python 
 - Flask 
 - HTML
+- JavaScript
 
 ---
 
@@ -37,6 +38,7 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 
 - [x] Ler conteúdo de um arquivo
 - [x] Disponibilizar os dados via endpoint de API
+- [x] Consumir o endpoint no frontend e exibir os dados em um dashboard
 
 
 ---
@@ -49,7 +51,8 @@ painel-web/
 │   ├── app.py
 │   └── requirements.txt
 ├── frontend/
-│   └── index.html
+│   ├── index.html
+│   └── script.js
 ├── .env.example
 ├── README.md
 └── .gitignore
@@ -76,15 +79,16 @@ pip install -r requirements.txt
 # Inicie o projeto
 python app.py
 
-#Acesse
-http://127.0.0.1:5000
+# Acesse no navegador:
+http://127.0.0.1:5000/  → frontend
+http://127.0.0.1:5000/api/dados → API
 ```
 
 ---
 
 ## ⏭️ Próximas Etapas
 
-- [ ] Consumir o endpoint no frontend e exibir os dados em um dashboard
+- [ ] Estilizar o frontend
 
 ---
 
