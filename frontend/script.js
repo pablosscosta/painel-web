@@ -1,11 +1,18 @@
-fetch("http://127.0.0.1:5000/api/dados")
-  .then(response => response.json())
-  .then(data => {
+function atualizarPainel() {
+  fetch("/api/dados")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("painel").textContent = data.valor;
+      document.getElementById("atualizacao").textContent = `Última atualização: ${data.modificado}`;
+    })
+    .catch(error => {
+      document.getElementById("painel").textContent = "Erro";
+      console.error("Erro:", error);
+    });
+}
 
-    const div = document.getElementById("dados");
 
-    div.innerHTML = `<p>Valor: ${data[0]}</p>`;
-  })
-  .catch(error => {
-    console.error("Erro ao buscar dados:", error);
-  });
+atualizarPainel();
+
+
+setInterval(atualizarPainel, 900000);

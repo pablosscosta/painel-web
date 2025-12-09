@@ -36,9 +36,12 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 
 ## 🛠️ Funcionalidades
 
-- [x] Ler conteúdo de um arquivo
-- [x] Disponibilizar os dados via endpoint de API
-- [x] Consumir o endpoint no frontend e exibir os dados em um dashboard
+- Integração backend + frontend via Flask
+- Endpoint `/api/dados` retornando JSON com:
+  - `valor`: número lido do CSV
+  - `modificado`: horário da última atualização do arquivo
+- Painel em tela cheia exibindo o número e a última atualização
+- Atualização automática a cada 15 minutos
 
 
 ---
@@ -88,7 +91,7 @@ http://127.0.0.1:5000/api/dados → API
 
 ## ⏭️ Próximas Etapas
 
-- [ ] Estilizar o frontend
+- [ ] Adicionar transições visuais ao número
 
 ---
 

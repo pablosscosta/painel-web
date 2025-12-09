@@ -2,6 +2,7 @@ import os
 import csv
 from flask import Flask, jsonify, send_from_directory
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
 
@@ -14,18 +15,26 @@ def ler_arquivo():
         with open(caminho, newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
             for linha in reader:
-                if linha:  
+                if linha:
                     dados.append(linha[0])
     except Exception as e:
         print(f"Erro ao ler arquivo: {e}")
-    return dados
-
+    return dados, caminho
 
 @app.route("/api/dados", methods=["GET"])
 def api_dados():
-    dados = ler_arquivo()
-    return jsonify(dados)
+    dados, caminho = ler_arquivo()
 
+    try:
+        timestamp = os.path.getmtime(caminho)
+        modificado = datetime.fromtimestamp(timestamp).strftime("%d/%m/%Y %H:%M")
+    except Exception:
+        modificado = "desconhecido"
+
+    return jsonify({
+        "valor": dados[0] if dados else None,
+        "modificado": modificado
+    })
 
 @app.route("/")
 def index():
