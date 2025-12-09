@@ -32,17 +32,53 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 
 ---
 
+## 🛠️ Funcionalidades
+
+- [x] Ler conteúdo de um arquivo
+
+---
+
 ## 📂 Estrutura do Projeto
 
 ```
 painel-web/
 ├── backend/
-│   └── app.py
+│   ├── app.py
+│   └── requirements.txt
 ├── frontend/
 │   └── index.html
-├── .gitignore
-└── README.md
+├── .env.example
+├── README.md
+└── .gitignore
 ```
+
+---
+
+## 📦 Instalação / Como Executar
+
+```bash
+# Clone o repositório
+git clone https://github.com/pablosscosta/painel-web.git
+
+# Acesse a pasta do projeto
+cd painel-web/backend
+
+# Ative o ambiente virtual
+source venv/bin/activate   # Linux/Mac
+.\venv\Scripts\activate    # Windows PowerShell
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Inicie o projeto
+python app.py
+```
+
+---
+
+## ⏭️ Próximas Etapas
+
+- [ ] Criar um endpoint de API para disponibilizar os dados lidos do arquivo
 
 ---
 
