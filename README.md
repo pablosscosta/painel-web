@@ -28,6 +28,7 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 ## 🚀 Tecnologias Utilizadas
 
 - Python 
+- Flask 
 - HTML
 
 ---
@@ -35,6 +36,8 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 ## 🛠️ Funcionalidades
 
 - [x] Ler conteúdo de um arquivo
+- [x] Disponibilizar os dados via endpoint de API
+
 
 ---
 
@@ -72,13 +75,16 @@ pip install -r requirements.txt
 
 # Inicie o projeto
 python app.py
+
+#Acesse
+http://127.0.0.1:5000
 ```
 
 ---
 
 ## ⏭️ Próximas Etapas
 
-- [ ] Criar um endpoint de API para disponibilizar os dados lidos do arquivo
+- [ ] Consumir o endpoint no frontend e exibir os dados em um dashboard
 
 ---
 
