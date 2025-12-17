@@ -1,18 +1,14 @@
-function atualizarPainel() {
-  fetch("/api/dados")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("painel").textContent = data.valor;
-      document.getElementById("atualizacao").textContent = `Última atualização: ${data.modificado}`;
-    })
-    .catch(error => {
-      document.getElementById("painel").textContent = "Erro";
-      console.error("Erro:", error);
-    });
-}
+const painel = document.getElementById("painel");
+const atualizacao = document.getElementById("atualizacao");
 
+const source = new EventSource("/stream");
 
-atualizarPainel();
+source.onmessage = function(event) {
+  const data = JSON.parse(event.data);
 
+  painel.textContent = data.valor;
+  atualizacao.textContent = `Última atualização: ${data.modificado}`;
 
-setInterval(atualizarPainel, 900000);
+  painel.classList.add("atualizado");
+  setTimeout(() => painel.classList.remove("atualizado"), 500);
+};

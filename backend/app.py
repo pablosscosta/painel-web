@@ -1,6 +1,7 @@
 import os
 import csv
-from flask import Flask, jsonify, send_from_directory
+import time
+from flask import Flask, jsonify, send_from_directory, Response
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -35,6 +36,26 @@ def api_dados():
         "valor": dados[0] if dados else None,
         "modificado": modificado
     })
+
+@app.route("/stream")
+def stream():
+    def gerar_eventos():
+        ultimo_valor = None
+        while True:
+            dados, caminho = ler_arquivo()
+            valor = dados[0] if dados else None
+            try:
+                timestamp = os.path.getmtime(caminho)
+                modificado = datetime.fromtimestamp(timestamp).strftime("%d/%m/%Y %H:%M")
+            except Exception:
+                modificado = "desconhecido"
+
+            if valor != ultimo_valor:
+                yield f'data: {{"valor":"{valor}","modificado":"{modificado}"}}\n\n'
+                ultimo_valor = valor
+
+            time.sleep(5)  # checa a cada 5 segundos
+    return Response(gerar_eventos(), mimetype="text/event-stream")
 
 @app.route("/")
 def index():
