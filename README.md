@@ -22,6 +22,7 @@ Esse projeto tem como objetivo automatizar esse processo: ler os arquivos, proce
 ## 📊 Status do Projeto
 
 - 🚧 Em desenvolvimento  
+- Aplicação funcional.
 
 ---
 
@@ -72,6 +73,9 @@ git clone https://github.com/pablosscosta/painel-web.git
 # Acesse a pasta do projeto
 cd painel-web/backend
 
+#Crie um ambiente virtual
+python -m venv venv
+
 # Ative o ambiente virtual
 source venv/bin/activate   # Linux/Mac
 .\venv\Scripts\activate    # Windows PowerShell
@@ -86,12 +90,6 @@ python app.py
 http://127.0.0.1:5000/  → frontend
 http://127.0.0.1:5000/api/dados → API
 ```
-
----
-
-## ⏭️ Próximas Etapas
-
-- [ ] Adicionar transições visuais ao número
 
 ---
 
