@@ -1,7 +1,7 @@
 import os
 import csv
 import time
-from flask import Flask, jsonify, send_from_directory, Response
+from flask import Flask, jsonify, send_from_directory, Response, redirect
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -54,12 +54,16 @@ def stream():
                 yield f'data: {{"valor":"{valor}","modificado":"{modificado}"}}\n\n'
                 ultimo_valor = valor
 
-            time.sleep(5)  # checa a cada 5 segundos
+            time.sleep(120)  # checa a cada 5 segundos
     return Response(gerar_eventos(), mimetype="text/event-stream")
+
+@app.route("/painel-prod")
+def painel_prod():
+    return send_from_directory(app.static_folder, "index.html")
 
 @app.route("/")
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    return redirect("/painel-prod")
 
 if __name__ == "__main__":
     app.run(debug=True)
