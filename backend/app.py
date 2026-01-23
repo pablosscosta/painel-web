@@ -2,15 +2,13 @@ import os
 import csv
 import time
 from flask import Flask, jsonify, send_from_directory, Response, redirect
-from dotenv import load_dotenv
 from datetime import datetime
-
-load_dotenv()
+from config import config
 
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
 
 def ler_arquivo():
-    caminho = os.getenv("CSV_PATH", "CAMINHO/PLACEHOLDER/ARQUIVO.csv")
+    caminho = config.CSV_PATH
     dados = []
     try:
         with open(caminho, newline='', encoding='utf-8') as csvfile:
