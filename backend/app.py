@@ -4,21 +4,10 @@ import time
 from flask import Flask, jsonify, send_from_directory, Response, redirect
 from datetime import datetime
 from config import config
+from file_reader import ler_arquivo
 
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
 
-def ler_arquivo():
-    caminho = config.CSV_PATH
-    dados = []
-    try:
-        with open(caminho, newline='', encoding='utf-8') as csvfile:
-            reader = csv.reader(csvfile)
-            for linha in reader:
-                if linha:
-                    dados.append(linha[0])
-    except Exception as e:
-        print(f"Erro ao ler arquivo: {e}")
-    return dados, caminho
 
 @app.route("/api/dados", methods=["GET"])
 def api_dados():
