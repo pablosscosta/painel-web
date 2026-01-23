@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Painel {{ fabrica_nome }}{% endblock %}
+
+{% block content %}
+<h1>🏭 PAINEL {{ fabrica_nome|upper }}</h1>
+<hr>
+
+<div class="card">
+    <h2>📊 DASHBOARDS EM TEMPO REAL</h2>
+    
+    <a href="{{ url_for('painel_prod') }}" class="btn">
+        📈 Produção Atual
+    </a>
+    
+    <p><small>Monitoramento em tempo real da produção</small></p>
+</div>
+
+<div class="card">
+    <h2>📈 RELATÓRIOS & HISTÓRICOS</h2>
+    
+    <a href="{{ url_for('historico') }}" class="btn">
+        📅 Histórico de Produção
+    </a>
+    
+    <p><small>Análise temporal dos dados coletados</small></p>
+</div>
+
+<div class="card">
+    <h2>⚙️ SISTEMA</h2>
+    <p><strong>Status:</strong> 🟢 Operacional</p>
+    <p><strong>Arquivo monitorado:</strong> {{ arquivo_monitorado }}</p>
+    <p><strong>Última verificação:</strong> {{ ultima_verificacao }}</p>
+    
+    <a href="{{ url_for('sobre') }}" class="btn">
+        ℹ️ Sobre o Sistema
+    </a>
+</div>
+{% endblock %}
